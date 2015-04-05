@@ -1,0 +1,52 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-5 text-right">
+            <span class="fixture-home-team">
+                {{fixture.home_team.name}}
+            </span>
+            <img {{ bind-attr src=fixture.home_team.logo_url}} width="25px" height="25px" alt=""/>
+        </div>
+        <div class="col-md-2 text-center">
+        {{#if isEditing }}
+            {{ input type="text" class="form-control fixture-score" action="updateScore" on="enter" value=score width="100%"}}
+        {{else}}
+            <span class="fixture-score" {{action "enterUpdate"}}>
+                {{fixture.home_score}}:{{fixture.away_score}}
+            </span>
+        {{/if}}
+        </div>
+        <div class="col-md-5 text-left">
+            <img {{ bind-attr src=fixture.away_team.logo_url}} width="25px" height="25px" alt=""/>
+            <span class="fixture-home-team">
+                 {{fixture.away_team.name}}
+            </span>
+        </div>
+    </div>
+</div>
+{{#if isEditing}}
+<div class="col-md-12 fixture-details">
+    <div class="row">
+        <div class="col-md-5">
+            {{recent-games games=fixture.home_recent_games}}
+        </div>
+        <div class="col-md-2">
+            {{#each h2h in fixture.head_to_head_games}}
+              <div class="row text-center">
+                {{ h2h.home_team.id }}
+                {{ h2h.home_score }} : {{ h2h.away_score }}
+                {{ h2h.away_team.id }}
+              </div>
+            {{/each}}
+            <div class="row text-center">
+              <span class="prediction"></span>
+            </div>
+            <div class="row text-center">
+              <button type="button" class="btn btn-default btn-xs" {{action "predict"}}>Predict!</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+          {{recent-games games=fixture.away_recent_games}}
+        </div>
+    </div>
+</div>
+{{/if}}

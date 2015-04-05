@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+<div class="panel-body">
+<table width="100%" class="table table-striped">
+  <tbody>
+    {{#each game in games}}
+    <tr>
+      <td>{{game.home_team.id}}</td>
+      <td>{{game.home_score}}:{{game.away_score}}</td>
+      <td>{{game.away_team.id}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        {{#if hasPrev }}
+          {{#link-to 'season.fixtures' seasonId (query-params gameday=prevGameDay)}}
+          <i class="fa fa-arrow-circle-left"></i>
+          {{/link-to}}
+        {{/if}}
+        <span>Game Day {{gameday}}</span>
+        {{#if hasNext}}
+          {{#link-to 'season.fixtures' seasonId (query-params gameday=nextGameDay)}}
+          <i class="fa fa-arrow-circle-right"></i>
+          {{/link-to}}
+        {{/if}}
+      </div>
+      <div class="panel-body">
+        {{#each fixture in model}}
+          {{fixture-row fixture=fixture action="updateScore"}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="panel panel-default standing-table">
+      <div class="panel-heading text-center">
+        Standing
+      </div>
+      <div class="panel-body">
+
+        <!-- standing -->
+        <table width="100%" class="table table-striped table-hover table-bordered">
+          <thead>
+            <th width="5%">Pos</th>
+            <th width="40%">Team</th>
+            <th class="text-right">Pld</th>
+            <th class="text-right">W</th>
+            <th class="text-right">D</th>
+            <th class="text-right">L</th>
+            <th class="text-right standing-table-pts">Pts</th>
+            <th class="text-right">GF</th>
+            <th class="text-right">GA</th>
+            <th class="text-right">GD</th>
+          </thead>
+          <tbody>
+          {{#each pos in table }}
+            <tr>
+              <td>{{pos.pos}}</td>
+              <td>
+                <img class="team-logo" {{bind-attr src=pos.team_logo_url}} width="25px" height="25px" alt="" />
+                <span>{{pos.team_name}}</span>
+              </td>
+              <td class="text-right">{{pos.pld}}</td>
+              <td class="text-right">{{pos.win}}</td>
+              <td class="text-right">{{pos.draw}}</td>
+              <td class="text-right">{{pos.loss}}</td>
+              <td class="text-right standing-table-pts">{{pos.pts}}</td>
+              <td class="text-right">{{pos.gf}}</td>
+              <td class="text-right">{{pos.ga}}</td>
+              <td class="text-right">{{pos.gd}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+        <!-- end -->
+
+      </div>
+    </div>
+  </div>
+
+</div>

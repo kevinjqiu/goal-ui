@@ -1,0 +1,30 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            {{#each cc in currentSeasons}}
+            <li>
+            <a href="#"><i class="fa fa-sitemap fa-fw"></i>{{ cc.country.name }}<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                {{#each season in cc.seasons }}
+                <li>
+                <a href="#">{{ season.competition.name }}<span class="fa arrow"></span></a>
+                <ul class="nav nav-third-level">
+                    <li>
+                    {{#link-to 'season.fixtures' season.id (query-params gameday=season.next_game_day)}}Fixtures{{/link-to}}
+                    </li>
+                    <li>
+                    {{#link-to 'season.table' season.id}}Table{{/link-to}}
+                    </li>
+                </ul>
+                <!-- /.nav-third-level -->
+                </li>
+                {{/each}}
+            </ul>
+            <!-- /.nav-second-level -->
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+<!-- /.navbar-static-side -->
