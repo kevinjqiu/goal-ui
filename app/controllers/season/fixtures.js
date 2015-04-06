@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
   }.property('gameday'),
 
   hasPrev: function() {
-    return parseInt(this.get('gameday')) !== 0;
+    return parseInt(this.get('gameday')) !== 1;
   }.property('gameday'),
 
   hasNext: function() {
