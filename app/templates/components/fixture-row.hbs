@@ -8,10 +8,14 @@
         </div>
         <div class="col-md-2 text-center">
         {{#if isEditing }}
-            {{ input type="text" class="form-control fixture-score" action="updateScore" on="enter" value=score width="100%"}}
+            {{ input type="text" class="form-control fixture-score" action="updateScore" on="enter" value=score width="100%" autofocus=1}}
         {{else}}
             <span class="fixture-score" {{action "enterUpdate"}}>
-                {{fixture.home_score}}:{{fixture.away_score}}
+                {{#if fixture.home_score }}
+                  {{fixture.home_score}}:{{fixture.away_score}}
+                {{else}}
+                  vs
+                {{/if}}
             </span>
         {{/if}}
         </div>
