@@ -11,7 +11,7 @@
             {{ input type="text" class="form-control fixture-score" action="updateScore" on="enter" value=score width="100%" autofocus=1}}
         {{else}}
             <span class="fixture-score" {{action "enterUpdate"}}>
-                {{#if fixture.home_score }}
+                {{#if fixture.played }}
                   {{fixture.home_score}}:{{fixture.away_score}}
                 {{else}}
                   vs

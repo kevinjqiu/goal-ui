@@ -4,9 +4,9 @@
   <tbody>
     {{#each game in games}}
     <tr>
-      <td>{{game.home_team.id}}</td>
+      <td><img {{ bind-attr src=game.home_team.logo_url}} width="25px" height="25px" alt=""/></td>
       <td>{{game.home_score}}:{{game.away_score}}</td>
-      <td>{{game.away_team.id}}</td>
+      <td><img {{ bind-attr src=game.away_team.logo_url}} width="25px" height="25px" alt=""/></td>
     </tr>
     {{/each}}
   </tbody>

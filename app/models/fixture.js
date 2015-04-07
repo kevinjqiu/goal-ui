@@ -9,5 +9,8 @@ export default DS.Model.extend({
   away_team: DS.belongsTo('team', {async: true}),
   home_recent_games: DS.hasMany('fixture', {async: true, inverse: null}),
   away_recent_games: DS.hasMany('fixture', {async: true, inverse: null}),
-  head_to_head_games: DS.hasMany('fixture', {async: true, inverse: null})
+  head_to_head_games: DS.hasMany('fixture', {async: true, inverse: null}),
+  played: function() {
+    return this.get('home_score') !== null && this.get('away_score') !== null;
+  }.property('home_score', 'away_score')
 });
