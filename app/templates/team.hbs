@@ -15,24 +15,26 @@
           <thead>
             <tr>
               <th>Game Day</th>
-              <th>Against</th>
+              <th>Home</th>
               <th>Score</th>
-              <th>Home/Away</th>
+              <th>Away</th>
             </tr>
           </thead>
           <tbody>
+            {{#each fixture in model.fixtures}}
             <tr>
-              <td>1</td>
+              <td>{{ fixture.game_day }}</td>
               <td>
-              {{ team-widget team_logo_url="/assets/logos/normal/ABN.png" team_name="Bournmouth" team_id="ABN" }}
+              {{ team-widget team_logo_url=fixture.home_team.logo_url team_name=fixture.home_team.name team_id=fixture.home_team.id }}
               </td>
               <td>
-              2:0
+              {{ fixture.home_score }} : {{ fixture.away_score }}
               </td>
               <td>
-              H
+              {{ team-widget team_logo_url=fixture.away_team.logo_url team_name=fixture.away_team.name team_id=fixture.away_team.id }}
               </td>
             </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>
