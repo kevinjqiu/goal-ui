@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('fixtures');
     this.route('fixture', { path: '/fixture/:fixture_id' });
   });
+  this.route('team', { path: '/team/:team_id' });
 });
 
 export default Router;

@@ -48,8 +48,7 @@
             <tr>
               <td>{{pos.pos}}</td>
               <td>
-                <img class="team-logo" {{bind-attr src=pos.team_logo_url}} width="25px" height="25px" alt="" />
-                <span class="standing-table-team">{{pos.team_name}}</span>
+                {{team-widget team_logo_url=pos.team_logo_url team_name=pos.team_name team_id=pos.team_id season_id=seasonId}}
               </td>
               <td class="text-right">{{pos.pld}}</td>
               <td class="text-right">{{pos.win}}</td>
